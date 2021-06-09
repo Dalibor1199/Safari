@@ -24,7 +24,7 @@ public class Predmet implements Serializable {
 	private String opis;
 
 	private int pocetnaCena;
-
+	
 	@Temporal(TemporalType.DATE)
 	private Date rokZavAuk;
 

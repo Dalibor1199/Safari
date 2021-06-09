@@ -85,6 +85,15 @@ public class Kontroler {
 		this.getInfo(req);
 		List<Predmet> lista = pr.findAll();
 		req.getSession().setAttribute("predmeti", lista);
+		List<Double> najveceCene = new ArrayList<Double>();
+		for (Predmet predmet : lista) {
+			if (predmet.getLicitacijas().size() == 0) {
+				najveceCene.add(0.0);
+			} else {
+				najveceCene.add(predmet.getLicitacijas().get(0).getIznos());
+			}
+		}
+		req.getSession().setAttribute("najveceCene", najveceCene);
 
 		return "PrikazAukcija";
 	}
@@ -310,5 +319,23 @@ public class Kontroler {
 		
 		return "regIndex";
 	}
+	
+	@RequestMapping(value = "/svojeAukcije", method = RequestMethod.GET)
+	public String svojeAukcije(HttpServletRequest req) {
+		Korisnik k = (Korisnik)req.getSession().getAttribute("korisnik");
+		List<Predmet> svoji = pr.findByKorisnik(k);
+		List<Predmet> nova = new ArrayList<Predmet>();
+		Date date = new Date();
+		for (Predmet predmet : svoji) {
+			if (date.compareTo(predmet.getRokZavAuk())>0) {
+				nova.add(predmet);
+			}
+		}
+		req.getSession().setAttribute("svojiPredmeti", nova);
+		
+		
+		return "svojeAukcije";
+	}
+	
 
 }

@@ -20,7 +20,7 @@
 		<p align="right"><a href="/Safari/kontroler/logOut"><button type="submit" class="btn btn-outline-primary">Odjavi se</button></a></p>
 	
 	<div class="center">
-		<a href="/Safari/index.jsp" ><img alt="slika"
+		<a href="/Safari/regIndex.jsp" ><img alt="slika"
 				src="https://cdn.discordapp.com/attachments/731987479732944970/836919583423332352/839a22fd8c4f4fd2939008dc9b7d7d632.png"
 				width="300" height="300"></a>
 		</div>

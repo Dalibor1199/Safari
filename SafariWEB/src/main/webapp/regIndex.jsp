@@ -18,7 +18,7 @@
 
 	<div class="sidenav">
 		<a href="/Safari/kontroler/getInfo">Postavljanje predmeta na
-			aukciju</a> <a href="">Vase aukcije</a>
+			aukciju</a> <a href="/Safari/kontroler/svojeAukcije">Vase aukcije</a>
 	</div>
 	<p align="right"><a href="/Safari/kontroler/logOut"><button type="submit" class="btn btn-outline-primary">Odjavi se</button></a></p>
 	<div class="center">
@@ -60,17 +60,18 @@
 		</form>
 		<br>
 		<div class="row">
-			<c:forEach items="${predmeti }" var="p">
+			<c:forEach items="${predmeti }" var="p" varStatus="i">
 				<div class="col-md-4 product-item">
 					<div class="image">
 						<img src="${p.slikaUrl }" width="200" height="200">
 					</div>
-					<div>${p.naziv }</div>
+					<div><b>${p.naziv }</b></div>
 					<div>${p.opis }</div>
 					<div>${p.stanje.opis }</div>
 					<div>${p.kategorija.naziv }</div>
 					<div>${p.rokZavAuk }</div>
-					<div>${p.pocetnaCena }$</div>
+					<div>Pocetna cena: ${p.pocetnaCena }$</div>
+					<div>Najveca ponuda: ${najveceCene[i.index] }$</div>
 					<div>Vlasnik: ${p.korisnik.ime } ${p.korisnik.prezime }</div>
 					<a href="/Safari/kontroler/getLicitacije?idPr=${p.idPredmet }"><button
 							type="submit" class="btn btn-primary form-control"<c:if test="${p.korisnik.idKorisnik eq korisnik.idKorisnik }"><c:out value="hidden='hidden'" /></c:if>">Licitiraj
